@@ -34,5 +34,4 @@ public class EmployeeServiceImpl implements GenericService<Employee, EmployeeDTO
         }
         return employees;
     }
-
 }

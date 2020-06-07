@@ -1,6 +1,5 @@
 package com.flexit.commons.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import org.bson.types.ObjectId;
@@ -19,6 +18,5 @@ public class Employee implements Serializable {
     private ObjectId id;
     @NotNull
     private String name;
-    @JsonFormat(pattern="yyyy-MM-dd")
     private Date lastEventDate;
 }
