@@ -24,7 +24,7 @@ public class EmployeeServiceImpl implements GenericService<Employee, EmployeeDTO
 
     @Override
     public List<EmployeeDTO> findAll(Order order) {
-        List<EmployeeDTO> employees = null;
+        List<EmployeeDTO> employees;
         if (Order.ASC.equals(order)) {
             employees = repository.findAllByOrderByLastEventDateAsc().stream().map(employee -> parser.parse(employee)).collect(Collectors.toList());
         } else if (Order.DESC.equals(order)) {

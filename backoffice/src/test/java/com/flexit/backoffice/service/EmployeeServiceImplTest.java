@@ -36,7 +36,7 @@ class EmployeeServiceImplTest extends TestUtils {
     public EmployeeServiceImplTest() throws ParseException {}
 
     @BeforeEach
-    void setup() throws ParseException {
+    void setup() {
         doReturn(orderedEmployeeList).when(repository).findAllByOrderByLastEventDateAsc();
         doReturn(unorderedEmployeeList).when(repository).findAllByOrderByLastEventDateDesc();
     }
@@ -46,7 +46,8 @@ class EmployeeServiceImplTest extends TestUtils {
         List<EmployeeDTO> allEmployees = service.findAll(Order.DESC);
         assumeTrue(allEmployees != null, "Service not return all employees");
         List<EmployeeDTO> sortedEmployees = allEmployees.stream()
-                .sorted(Comparator.comparingLong((EmployeeDTO e) -> stringDateToLong(e.getLastEventDate())).reversed()).collect(Collectors.toList());
+                .sorted(Comparator.comparing(EmployeeDTO::getLastEventDate).reversed())
+                .collect(Collectors.toList());
         assertAll("Employees ordered",
                 () -> assertEquals(sortedEmployees.get(0).getName(), allEmployees.get(0).getName(), "First employee is not ordered"),
                 () -> assertEquals(sortedEmployees.get(sortedEmployees.size() - 1).getName(), allEmployees.get(allEmployees.size() - 1).getName(), "Last employee is not ordered")
@@ -58,7 +59,8 @@ class EmployeeServiceImplTest extends TestUtils {
         List<EmployeeDTO> allEmployees = service.findAll(Order.ASC);
         assumeTrue(allEmployees != null, "Service not return all employees");
         List<EmployeeDTO> sortedEmployees = allEmployees.stream()
-                .sorted(Comparator.comparingLong((EmployeeDTO e) -> stringDateToLong(e.getLastEventDate()))).collect(Collectors.toList());
+                .sorted(Comparator.comparing(EmployeeDTO::getLastEventDate))
+                .collect(Collectors.toList());
         assertAll("Employees ordered",
                 () -> assertEquals(sortedEmployees.get(0).getName(), allEmployees.get(0).getName(), "First employee is not ordered"),
                 () -> assertEquals(sortedEmployees.get(sortedEmployees.size() - 1).getName(), allEmployees.get(allEmployees.size() - 1).getName(), "Last employee is not ordered")
