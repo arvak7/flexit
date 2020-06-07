@@ -15,10 +15,24 @@ db.createUser({
 
 db.employees.insert({
   name: "Pep",
-  lastEventDate: '1985-04-23'  
+  lastEventDate: ISODate("1985-04-23T00:00:00.000Z")
 })
 
 db.employees.insert({
   name: "Joana",
-  lastEventDate: '2015-08-15'  
-});
+  lastEventDate: ISODate("2015-08-15T00:00:00.000Z")
+})
+
+db.employees.insert({
+  name: "Nina",
+  lastEventDate: ISODate("2012-12-12T00:00:00.000Z")
+})
+
+db.employees.insert({
+  name: "Miquel",
+  lastEventDate: ISODate("1999-09-19T00:00:00.000Z")
+})
+
+db.employees.insert({
+  name: "Rosa"
+})
