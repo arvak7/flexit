@@ -4,7 +4,6 @@ import com.flexit.backoffice.controller.TestUtils;
 import com.flexit.backoffice.repository.EmployeeRepository;
 import com.flexit.commons.dto.EmployeeDTO;
 import com.flexit.commons.enums.Order;
-import com.flexit.commons.parser.ParserEmployee;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -31,12 +30,8 @@ class EmployeeServiceImplTest extends TestUtils {
     @Autowired
     private EmployeeServiceImpl service;
 
-    @Autowired
-    private ParserEmployee parser;
-
     @MockBean
     private EmployeeRepository repository;
-
 
     public EmployeeServiceImplTest() throws ParseException {}
 
