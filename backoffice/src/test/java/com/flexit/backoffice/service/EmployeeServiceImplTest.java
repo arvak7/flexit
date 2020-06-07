@@ -27,13 +27,13 @@ import static org.mockito.Mockito.doReturn;
 @SpringBootTest
 class EmployeeServiceImplTest extends TestUtils {
 
+    public EmployeeServiceImplTest() throws ParseException {}
+
     @Autowired
     private EmployeeServiceImpl service;
 
     @MockBean
     private EmployeeRepository repository;
-
-    public EmployeeServiceImplTest() throws ParseException {}
 
     @BeforeEach
     void setup() {
